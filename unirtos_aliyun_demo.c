@@ -1,6 +1,6 @@
 /*****************************************************************/ /**
-* @file easy_aliot_basic_demo.c
-* @brief EASY ALIOT BASIC Demo Application
+* @file unirtos_aliyun_demo.c
+* @brief UNIRTOS ALIYUN Demo Application
 * @author lambert.zhao@quectel.com
 * @date 2025-12-27
 *

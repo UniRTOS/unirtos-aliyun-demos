@@ -1,6 +1,6 @@
 message(STATUS "cmake config ${CMAKE_CURRENT_SOURCE_DIR}")
 
-set(target mqtt_ali_demo)
+set(target unirtos_aliyun_demos)
 add_apps_libraries($<TARGET_FILE:${target}>)
 add_library(${target} STATIC)
 set_target_properties(${target} PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${out_unir_lib_dir})
