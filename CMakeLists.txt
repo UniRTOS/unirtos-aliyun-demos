@@ -52,7 +52,3 @@ if(_app_external_library_targets)
 	target_link_libraries(${target} PUBLIC ${_app_external_library_targets})
 endif()
 
-# UNcomment to add the libraries you need here.
-target_link_libraries(${target} qcm_mqtt)
-target_link_libraries(${target} vtls)
-target_link_libraries(${target} utils)
