@@ -1,56 +1,58 @@
 # unirtos-aliyun-demos
 
-本仓库推荐通过 `unirtos-cli` 的 demo 工作流使用，以保证创建、环境拉取和编译流程一致。
+[中文](README.zh.md) | English
 
-## 功能描述
+This repository is recommended to be used through the `unirtos-cli` demo workflow to ensure consistency in project creation, environment setup, and build procedures.
 
-本 Demo 展示 UniRTOS 设备通过 MQTT 对接阿里云 IoT 平台的完整流程，适合作为云接入样例。
+## Feature Description
 
-- 支持阿里云设备鉴权（clientId / username / password）
-- 支持 MQTT 主题订阅与消息发布
-- 支持 TLS 可选连接能力（可按配置启用）
-- 采用异步事件驱动流程，便于扩展业务消息处理
+This demo shows the complete workflow for a UniRTOS device connecting to the Alibaba Cloud IoT platform through MQTT, and is suitable as a cloud connectivity example.
 
-## 快速上手
+- Supports Alibaba Cloud device authentication (`clientId / username / password`)
+- Supports MQTT topic subscription and message publishing
+- Supports optional TLS connectivity (can be enabled by configuration)
+- Uses an asynchronous event-driven workflow for easy extension of business message handling
 
-### 1. 安装 UniRTOS 工具链
+## Quick Start
 
-- [开发准备](https://www.quectel.com.cn/unirtos/docs?docs_page=快速上手/开发准备/开发准备.html)
-- [安装交叉编译工具链](https://www.quectel.com.cn/unirtos/docs?docs_page=快速上手/环境搭建/环境搭建.html)
-- [安装 Python3](https://www.python.org/downloads/)
-- [安装 git](https://git-scm.com)
-- 安装 `unirtos-cli`：`pip install unirtos-cli`
+### 1. Install the UniRTOS Toolchain
 
-以上工具安装完成后，确认以下命令可用：
+- [Development Preparation](https://www.quectel.com.cn/unirtos/docs?docs_page=快速上手/开发准备/开发准备.html)
+- [Install the Cross-Compilation Toolchain](https://www.quectel.com.cn/unirtos/docs?docs_page=快速上手/环境搭建/环境搭建.html)
+- [Install Python3](https://www.python.org/downloads/)
+- [Install git](https://git-scm.com)
+- Install `unirtos-cli`: `pip install unirtos-cli`
+
+After the above tools are installed, confirm that the following commands are available:
 
 ```bash
 python --version # Python3
 git --version
-unirtos --version # 1.0.5 及以上版本
-unirtos-cli version # 1.0.11 及以上版本
+unirtos --version # 1.0.5 or later
+unirtos-cli version # 1.0.11 or later
 ```
 
-### 2. 使用 unirtos-cli 拉取 demo
+### 2. Fetch the Demo Using unirtos-cli
 
-先查看可用 demo 与版本：
+First, check the available demos and versions:
 
 ```bash
 unirtos-cli ls-demos
 ```
 
-创建本 demo 工程：
+Create this demo project:
 
 ```bash
 unirtos-cli new -r unirtos-aliyun-demos
 ```
 
-如需指定版本：
+To specify a version:
 
 ```bash
 unirtos-cli new -r unirtos-aliyun-demos -v 1.0.0
 ```
 
-### 3. 进入工程并编译
+### 3. Enter the Project and Build
 
 ```bash
 cd unirtos-aliyun-demos-1.0.0
@@ -58,23 +60,23 @@ unirtos-cli env-setup
 unirtos-cli build
 ```
 
-### 4. 配置阿里云连接参数
+### 4. Configure Alibaba Cloud Connection Parameters
 
-在 `unirtos_aliyun_demo.c` 中修改以下宏定义以匹配你的阿里云 IoT 设备信息：
+Modify the following macro definitions in `unirtos_aliyun_demo.c` to match your Alibaba Cloud IoT device information:
 
-| 宏定义 | 说明 |
-|--------|------|
-| `ALIOT_BASIC_DEMO_SERVER_ADDR` | 阿里云 MQTT 服务器地址 |
-| `ALIOT_BASIC_DEMO_SERVER_PORT` | 服务器端口号 |
-| `ALIOT_BASIC_DEMO_TOPIC_SUB` | 订阅主题 |
-| `ALIOT_BASIC_DEMO_TOPIC_PUB` | 发布主题 |
-| `ALIOT_BASIC_DEMO_CLIENTID` | MQTT 客户端标识 |
-| `ALIOT_BASIC_DEMO_PRODUCT_KEY` | 阿里云产品 Key |
-| `ALIOT_BASIC_DEMO_DEVICE_NAME` | 设备名称 |
-| `ALIOT_BASIC_DEMO_DEVICE_SECRET` | 设备密钥 |
-| `ALIOT_BASIC_DEMO_MQTTS` | 是否启用 TLS（0 关闭 / 1 开启） |
+| Macro | Description |
+|--------|-------------|
+| `ALIOT_BASIC_DEMO_SERVER_ADDR` | Alibaba Cloud MQTT server address |
+| `ALIOT_BASIC_DEMO_SERVER_PORT` | Server port number |
+| `ALIOT_BASIC_DEMO_TOPIC_SUB` | Subscription topic |
+| `ALIOT_BASIC_DEMO_TOPIC_PUB` | Publish topic |
+| `ALIOT_BASIC_DEMO_CLIENTID` | MQTT client identifier |
+| `ALIOT_BASIC_DEMO_PRODUCT_KEY` | Alibaba Cloud product key |
+| `ALIOT_BASIC_DEMO_DEVICE_NAME` | Device name |
+| `ALIOT_BASIC_DEMO_DEVICE_SECRET` | Device secret |
+| `ALIOT_BASIC_DEMO_MQTTS` | Whether to enable TLS (`0` disabled / `1` enabled) |
 
-示例：
+Example:
 
 ```c
 #define ALIOT_BASIC_DEMO_SERVER_ADDR     "iot-xxxxxxxx.mqtt.iothub.aliyuncs.com"
@@ -89,33 +91,33 @@ unirtos-cli build
 #define ALIOT_BASIC_DEMO_MQTTS           0
 ```
 
-### 5. 运行日志示例
+### 5. Example Runtime Log
 
-成功运行后，串口会看到类似日志：
+After successful execution, the serial port will show logs similar to the following:
 
 ```bash
 [I/DEMO] unir_mqtt_aliot_demo_event_cb 281 event:11,evt_param:c111b9c
 [I/DEMO] unir_mqtt aliot demo recv new message 749 client idx=1, new message=0
 ```
 
-## 常用命令
+## Common Commands
 
 ```bash
-# 打开 SDK 菜单配置
+# Open the SDK menu configuration
 unirtos-cli menuconfig
 
-# 清理构建产物
+# Clean build artifacts
 unirtos-cli clean
 ```
 
-## 技术社区
+## Technical Community
 
-技术社区：https://forumschinese.quectel.com/c/66-category/66
+Technical Community: https://forumschinese.quectel.com/c/66-category/66
 
-## 贡献指南
+## Contribution Guide
 
-欢迎参与共建，建议按以下方式提交：
-- 提交前先执行一次基础验证：env-setup、build、clean。
-- 使用清晰的提交说明，描述改动目的、影响范围和验证结果。
-- 新增功能或行为变化时，同步更新 README 与相关文档。
-- 通过 Issue 或 Pull Request 提交问题修复与功能改进。
+Contributions are welcome. It is recommended to submit changes in the following way:
+- Run a basic verification before submission: `env-setup`, `build`, `clean`.
+- Use clear commit messages describing the purpose of the change, scope of impact, and verification results.
+- When adding new features or changing behavior, update the README and related documentation accordingly.
+- Submit bug fixes and feature improvements through Issues or Pull Requests.
