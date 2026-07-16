@@ -1,4 +1,4 @@
-# unirtos_aliyun_demos
+# unirtos-aliyun-demos
 
 本仓库推荐通过 `unirtos-cli` 的 demo 工作流使用，以保证创建、环境拉取和编译流程一致。
 
@@ -41,19 +41,19 @@ unirtos-cli ls-demos
 创建本 demo 工程：
 
 ```bash
-unirtos-cli new -r unirtos_aliyun_demos
+unirtos-cli new -r unirtos-aliyun-demos
 ```
 
 如需指定版本：
 
 ```bash
-unirtos-cli new -r unirtos_aliyun_demos -v 1.0.0
+unirtos-cli new -r unirtos-aliyun-demos -v 1.0.0
 ```
 
 ### 3. 进入工程并编译
 
 ```bash
-cd unirtos_aliyun_demos-1.0.0
+cd unirtos-aliyun-demos-1.0.0
 unirtos-cli env-setup
 unirtos-cli build
 ```
